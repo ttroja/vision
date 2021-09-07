@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# Ignore build
+build*/
+
+# Ignore vscode settings.
+.vscode/
+
+thirdparty/opencv
+thirdparty/googletest
