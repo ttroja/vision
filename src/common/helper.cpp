@@ -59,6 +59,14 @@ Matrix<uint8_t> CifarBin::get_image_origin(size_t index) const {
   return std::move(matrix);
 }
 
+std::pair<size_t, size_t> CifarBin::get_image_label(size_t index) const {
+  ASSERT(index < file_count_);
+  constexpr size_t file_size = HEIGHT * WIDTH * CHANNEL;
+  size_t pos = index * (file_size + COARSE_FINE_BYTE);
+
+  return std::make_pair(*(buffer_.get() + pos), *(buffer_.get() + pos + 1));
+}
+
 Matrix<uint8_t> CifarBin::get_image_opencv(size_t index) const {
   ASSERT(index < file_count_);
   constexpr size_t file_size = HEIGHT * WIDTH * CHANNEL;

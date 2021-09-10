@@ -1,0 +1,4 @@
+coarse_label_names.txt filter=lfs diff=lfs merge=lfs -text
+fine_label_names.txt filter=lfs diff=lfs merge=lfs -text
+test.bin filter=lfs diff=lfs merge=lfs -text
+train.bin filter=lfs diff=lfs merge=lfs -text

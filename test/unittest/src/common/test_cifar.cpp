@@ -42,6 +42,15 @@ TEST(cifar, get_image_opencv) {
   cv::imwrite(result_path, img);
 }
 
+TEST(cifar, get_image_label) {
+  std::string file_path = "../resource/cifar-100-binary/test.bin";
+  auto cifar = CifarBin(file_path);
+
+  auto pair = cifar.get_image_label(0);
+  EXPECT_EQ(pair.first, 10);
+  EXPECT_EQ(pair.second, 49);
+}
+
 TEST(cifar, get_image_r) {
   std::string file_path = "../resource/cifar-100-binary/test.bin";
   auto cifar = CifarBin(file_path);
