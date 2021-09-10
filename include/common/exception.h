@@ -24,7 +24,7 @@ private:
   int error_ = ErrorCode::FAILURE;
 };
 
-void log(const char *fmt, ...) {
+inline void log(const char *fmt, ...) {
   va_list lst;
   va_start(lst, fmt);
   vfprintf(stderr, fmt, lst);
@@ -43,7 +43,7 @@ void log(const char *fmt, ...) {
   do {                                                                         \
     if (UNLIKELY(!(_cond))) {                                                  \
       LOG(__VA_ARGS__);                                                        \
-      THROW(mdlwrap::MDLWrapException{_fail});                                 \
+      THROW(Exception{_fail});                                                 \
     }                                                                          \
   } while (0)
 

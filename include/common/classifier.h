@@ -17,7 +17,7 @@ public:
   virtual void set_bias(const Matrix<T> &bias) = 0;
   virtual const Matrix<T> get_bias() = 0;
 
-  virtual const Matrix<T> get_score(const Matrix<T> &x) = 0;
+  virtual const Matrix<T> get_score(const Matrix<uint8_t> &x) = 0;
 
   static std::shared_ptr<Classifier<T>> make(int rows, int cols,
                                              ClassifierType type);
@@ -36,7 +36,7 @@ public:
   virtual void set_bias(const Matrix<T> &bias) override;
   virtual const Matrix<T> get_bias() override { return b_; }
 
-  virtual const Matrix<T> get_score(const Matrix<T> &x) override;
+  virtual const Matrix<T> get_score(const Matrix<uint8_t> &x) override;
 
 private:
   Matrix<T> w_{};
@@ -62,7 +62,7 @@ void LinearClassifier<T>::set_bias(const Matrix<T> &bias) {
 
 template <typename T>
 const Matrix<T> LinearClassifier<T>::get_score(
-    const Matrix<T> &x) { // this will return a matrix, not a value
+    const Matrix<uint8_t> &x) { // this will return a matrix, not a value
   return w_ * x + b_;
 }
 
