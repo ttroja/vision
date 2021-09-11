@@ -43,7 +43,7 @@ TEST(classifier, get_score) {
   Matrix<float> weight = {{1.1, 2.1, 3}, {1.3, 4.1, 5.1}, {1.1, 2.1, 0.3}};
   Matrix<float> bias = {{1.1, 2.1, 3}};
 
-  Matrix<float> sample = {{1.1, 2.1, 3}};
+  Matrix<uint8_t> sample = {{1, 2, 3}};
 
   classifier->set_weight(weight);
   classifier->set_bias(bias.dispose());

@@ -44,17 +44,16 @@ template <typename T> void Cifar::classify() {
       Classifier<T>::make(label_count_, image_shape_, ClassifierType::LINEAR);
   CHECK_THROW(classifier != nullptr, ErrorCode::FAILURE,
               "make classifier failed.");
-  // weight
-  Matrix<T> weight(label_count_, image_shape_);
-  Matrix<T> bias(label_count_, 1);
+  Matrix<T> weight(label_count_, image_shape_, 1);
+  Matrix<T> bias(label_count_, 1, 1);
   classifier->set_weight(weight);
   classifier->set_bias(bias);
 
   auto result = classifier->get_score(cifar_bin_->get_image_origin(0));
-
   result.print();
-  // for(auto i=0; i<image_count; i++){
-  //   classifier->get_score();
+
+  // for (auto i = 0; i < image_count_; i++) {
+  //   auto result = classifier->get_score(cifar_bin_->get_image_origin(i));
   // }
 }
 
